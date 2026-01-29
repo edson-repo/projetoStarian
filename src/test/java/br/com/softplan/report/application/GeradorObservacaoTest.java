@@ -67,12 +67,9 @@ public class GeradorObservacaoTest {
     //Testes unitarios
     @Test
     public void deve_lancar_excecao_com_mensagem_quando_lista_vazia() {
-        try {
-            observacaoService.gerarObservacao(listaDeNumerosInteiros.get(0));
-            fail("Esperava BadRequestException quando a lista é vazia.");
-        } catch (BadRequestException e) {
-            assertEquals("A lista 'notas' não pode ser vazia.", e.getMessage());
-        }
+
+            String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(0));
+            assertEquals("A lista 'notas' não pode ser vazia: 0.", resposta);
     }
 
     @Test

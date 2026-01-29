@@ -1,6 +1,8 @@
 package br.com.softplan.report.controller;
 
 import br.com.softplan.report.dto.ObservacaoRequest;
+import br.com.softplan.report.dto.ObservacaoResponse;
+import br.com.softplan.report.mapper.ObservacaoMapper;
 import br.com.softplan.report.model.ObservacaoEntity;
 import br.com.softplan.report.service.ObservacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,23 @@ public class ObservacaoController {
         return observacaoService.gerarObservacao(request.getNotas());
     }
 
+//    @GetMapping("/getAll")
+//    public List<ObservacaoEntity> findAll() {
+//        // Lista todas as observações já registradas.
+//        return observacaoService.findAll();
+//    }
     @GetMapping("/getAll")
-    public List<ObservacaoEntity> findAll() {
-        // Lista todas as observações já registradas.
-        return observacaoService.findAll();
+    public List<ObservacaoResponse> findAll() {
+
+        // 1) Busca no service (aqui ainda é Entity, porque service não conhece DTO)
+        List<ObservacaoEntity> observacoes = observacaoService.findAll();
+
+        // 2) Converte Entity -> DTO (contrato da API)
+        List<ObservacaoResponse> resposta = observacoes.stream()
+                .map(ObservacaoMapper::toResponse)
+                .collect(java.util.stream.Collectors.toList());
+
+        // 3) Retorna o DTO para o cliente
+        return resposta;
     }
 }

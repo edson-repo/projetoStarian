@@ -21,7 +21,7 @@ public class ObservacaoService {
 
         // Guardamos as notas como string (ex.: "[1, 2, 3]") só pra registrar.
         String notas = listaDeNumerosInteiros.toString();
-        String resposta = tratarPrefixoMensagem(listaDeNumerosInteiros) + tratarSufixoMensagem(listaDeNumerosInteiros);
+        String resposta = tratarPrefixoMensagem(listaDeNumerosInteiros) + tratarSufixoMensagem(listaDeNumerosInteiros) + ".";
 
         observacao.setNotas(notas);
         observacao.setResposta(resposta);
@@ -40,7 +40,7 @@ public class ObservacaoService {
         ObservacaoEntity observacao = new ObservacaoEntity();
 
         String notas = listaDeNumerosInteiros.toString();
-        String resposta = tratarPrefixoMensagem(listaDeNumerosInteiros) + tratarSufixoMensagem(listaDeNumerosInteiros);
+        String resposta = tratarPrefixoMensagem(listaDeNumerosInteiros) + tratarSufixoMensagem(listaDeNumerosInteiros) + ".";
 
         observacao.setNotas(notas);
         observacao.setResposta(resposta);
