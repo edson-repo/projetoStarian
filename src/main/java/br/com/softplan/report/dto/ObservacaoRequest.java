@@ -1,18 +1,25 @@
 package br.com.softplan.report.dto;
 
+import br.com.softplan.report.model.NotaFiscal;
+
 import java.util.List;
 
 public class ObservacaoRequest {
 
-    // Lista de números das notas fiscais que o cliente manda na requisição.
-    private List<Integer> notas;
+    private List<NotaFiscal> notas;
 
-    public List<Integer> getNotas() {
+    public ObservacaoRequest() {
+    }
+
+    public ObservacaoRequest(List<NotaFiscal> notas) {
+        this.notas = notas;
+    }
+
+    public List<NotaFiscal> getNotas() {
         return notas;
     }
 
-    public void setNotas(List<Integer> notas) {
-        // Mantém o DTO simples: apenas recebe e expõe os dados.
+    public void setNotas(List<NotaFiscal> notas) {
         this.notas = notas;
     }
 }

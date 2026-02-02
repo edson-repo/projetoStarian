@@ -11,7 +11,7 @@ public class ObservacaoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Guarda a lista de notas já “serializada” (ex.: "[1, 2, 3]").
+    // Guarda a lista de notas já “serializada” (ex.: "[{numero:123, valor:99.90}]").
     @Column(name = "notas", nullable = false, length = 1000)
     private String notas;
 
@@ -25,7 +25,6 @@ public class ObservacaoEntity {
 
     @PrePersist
     public void prePersist() {
-        // Evita ter que setar manualmente a data em cada save.
         this.dataCriacao = LocalDateTime.now();
     }
 

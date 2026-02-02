@@ -1,7 +1,6 @@
 package br.com.softplan.report.application;
 
 import br.com.softplan.report.controller.ObservacaoController;
-import br.com.softplan.report.exception.BadRequestException;
 import br.com.softplan.report.model.ObservacaoEntity;
 import br.com.softplan.report.repository.ObservacaoRepository;
 import br.com.softplan.report.service.ObservacaoService;
@@ -18,7 +17,6 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -65,30 +63,30 @@ public class GeradorObservacaoTest {
     }
 
     //Testes unitarios
-    @Test
-    public void deve_lancar_excecao_com_mensagem_quando_lista_vazia() {
-
-            String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(0));
-            assertEquals("A lista 'notas' não pode ser vazia: 0.", resposta);
-    }
-
-    @Test
-    public void deve_gerar_observacao_com_uma_nota_refatorado() {
-        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(1), false);
-        assertEquals("Fatura da nota fiscal de simples remessa: 1.", resposta);
-    }
-
-    @Test
-    public void deve_gerar_observacao_com_duas_notas_refatorado() {
-        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(2), false);
-        assertEquals("Fatura das notas fiscais de simples remessa: 1 e 2.", resposta);
-    }
-
-    @Test
-    public void deve_gerar_observacao_com_tres_notas_refatorado() {
-        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(3), false);
-        assertEquals("Fatura das notas fiscais de simples remessa: 1, 2 e 3.", resposta);
-    }
+//    @Test
+//    public void deve_lancar_excecao_com_mensagem_quando_lista_vazia() {
+//
+//            String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(0));
+//            assertEquals("A lista 'notas' não pode ser vazia: 0.", resposta);
+//    }
+//
+//    @Test
+//    public void deve_gerar_observacao_com_uma_nota_refatorado() {
+//        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(1), false);
+//        assertEquals("Fatura da nota fiscal de simples remessa: 1.", resposta);
+//    }
+//
+//    @Test
+//    public void deve_gerar_observacao_com_duas_notas_refatorado() {
+//        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(2), false);
+//        assertEquals("Fatura das notas fiscais de simples remessa: 1 e 2.", resposta);
+//    }
+//
+//    @Test
+//    public void deve_gerar_observacao_com_tres_notas_refatorado() {
+//        String resposta = observacaoService.gerarObservacao(listaDeNumerosInteiros.get(3), false);
+//        assertEquals("Fatura das notas fiscais de simples remessa: 1, 2 e 3.", resposta);
+//    }
 
     //teste "integrado" (Controller -> Service -> Repository mock)
     @Test

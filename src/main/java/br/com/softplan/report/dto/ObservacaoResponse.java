@@ -1,34 +1,40 @@
 package br.com.softplan.report.dto;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class ObservacaoResponse {
 
-    // Identificador do registro (quando a observação é persistida).
     private Long id;
 
-    // Entrada usada pra gerar a observação (a lista de notas).
-    private List<Integer> entrada;
+    // Agora é String porque no banco "notas" é String
+    private String entrada;
 
-    // Texto final gerado a partir da entrada.
+    // Agora é String porque no banco "resposta" é String
     private String saida;
 
-    public ObservacaoResponse(Long id, List<Integer> entrada, String saida) {
-        // DTO direto ao ponto: só empacota os dados de retorno.
+    // Opcional (mas útil para mostrar no front)
+    private LocalDateTime dataCriacao;
+
+    public ObservacaoResponse(Long id, String entrada, String saida, LocalDateTime dataCriacao) {
         this.id = id;
         this.entrada = entrada;
         this.saida = saida;
+        this.dataCriacao = dataCriacao;
     }
 
     public Long getId() {
         return id;
     }
 
-    public List<Integer> getEntrada() {
+    public String getEntrada() {
         return entrada;
     }
 
     public String getSaida() {
         return saida;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 }
